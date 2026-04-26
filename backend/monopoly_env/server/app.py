@@ -52,10 +52,17 @@ def healthz() -> dict[str, bool]:
 
 @lru_cache(maxsize=1)
 def cached_demo_bundle() -> dict:
-    demo_dir = Path(__file__).resolve().parents[1] / "outputs" / "demo"
-    rollout_path = demo_dir / "best_rollout.json"
-    metrics_path = demo_dir / "training_metrics.json"
-    if rollout_path.exists() and metrics_path.exists():
+    candidate_dirs = [
+        Path(__file__).resolve().parents[1] / "outputs" / "demo",
+        Path.cwd() / "outputs" / "demo",
+        Path.cwd() / "env" / "outputs" / "demo",
+        Path("/app/env/outputs/demo"),
+    ]
+    for demo_dir in candidate_dirs:
+        rollout_path = demo_dir / "best_rollout.json"
+        metrics_path = demo_dir / "training_metrics.json"
+        if not rollout_path.exists() or not metrics_path.exists():
+            continue
         import json
 
         return {
