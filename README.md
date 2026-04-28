@@ -9,7 +9,7 @@
 | Item | Link |
 | --- | --- |
 | Live demo | https://frontend-one-beta-84.vercel.app |
-| Hugging Face Space | https://huggingface.co/spaces/work-dwivediishivam/openmonopoly-india |
+| Hugging Face Space with full demo | https://huggingface.co/spaces/work-dwivediishivam/openmonopoly-india |
 | Code repository | https://github.com/work-dwivediishivam/scalerhack_round2_monopoly_teamtds |
 | Colab-compatible training notebook | https://colab.research.google.com/github/work-dwivediishivam/scalerhack_round2_monopoly_teamtds/blob/main/notebooks/openmonopoly_training_colab.ipynb |
 | Short pitch deck/writeup | https://github.com/work-dwivediishivam/scalerhack_round2_monopoly_teamtds/blob/main/docs/pitch_deck.md |
@@ -139,7 +139,7 @@ NEXT_PUBLIC_MONOPOLY_API_URL=http://localhost:8000 npm run dev
 
 ## Hugging Face Space
 
-The Hugging Face Space contains the OpenEnv backend files, Docker build file, README card, environment code, training script, and demo artifacts. The Space is intended as the judge-facing environment endpoint; the Vercel demo is the cinematic replay layer.
+The Hugging Face Space now opens directly into the full cinematic replay UI and also serves the OpenEnv backend/API from the same Docker app. The Vercel demo remains available as a mirror, but judges can open the Space and watch the board replay without leaving Hugging Face.
 
 ## Anti-Cheat And Safety
 
@@ -162,4 +162,3 @@ The Hugging Face Space contains the OpenEnv backend files, Docker build file, RE
 - add a natural-language policy adapter over the same OpenEnv observations
 - run longer self-play tournaments and publish W&B traces
 - record a sub-2-minute narrated demo from the Vercel replay
-

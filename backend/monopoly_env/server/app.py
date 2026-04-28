@@ -17,6 +17,7 @@ except Exception as e:  # pragma: no cover
     ) from e
 
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 try:
     from ..models import MonopolyAction, MonopolyObservation
@@ -80,6 +81,24 @@ def demo_rollout():
 @app.get("/demo/metrics")
 def demo_metrics():
     return cached_demo_bundle()["training_metrics"]
+
+
+def static_site_dir() -> Path | None:
+    candidate_dirs = [
+        Path(__file__).resolve().parents[1] / "static_site",
+        Path.cwd() / "static_site",
+        Path.cwd() / "env" / "static_site",
+        Path("/app/env/static_site"),
+    ]
+    for candidate in candidate_dirs:
+        if (candidate / "index.html").exists():
+            return candidate
+    return None
+
+
+site_dir = static_site_dir()
+if site_dir is not None:
+    app.mount("/", StaticFiles(directory=site_dir, html=True), name="site")
 
 
 def main() -> None:
