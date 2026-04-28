@@ -17,6 +17,7 @@ except Exception as e:  # pragma: no cover
     ) from e
 
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 try:
@@ -98,6 +99,11 @@ def static_site_dir() -> Path | None:
 
 site_dir = static_site_dir()
 if site_dir is not None:
+    @app.get("/web", include_in_schema=False)
+    def web_index():
+        return FileResponse(site_dir / "index.html")
+
+    app.mount("/web", StaticFiles(directory=site_dir, html=True), name="web")
     app.mount("/", StaticFiles(directory=site_dir, html=True), name="site")
 
 

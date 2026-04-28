@@ -24,7 +24,7 @@ OpenMonopoly India is an OpenEnv-compatible multi-agent environment for the Meta
 - Colab-compatible rerun notebook: https://colab.research.google.com/github/work-dwivediishivam/scalerhack_round2_monopoly_teamtds/blob/main/notebooks/openmonopoly_training_colab.ipynb
 - Pitch deck/writeup: https://github.com/work-dwivediishivam/scalerhack_round2_monopoly_teamtds/blob/main/docs/pitch_deck.md
 
-The Space root serves the full replay website. API endpoints such as `/demo/rollout`, `/demo/metrics`, and `/healthz` remain available from the same app.
+The Space serves the full replay website at `/` and `/web`. API endpoints such as `/demo/rollout`, `/demo/metrics`, and `/healthz` remain available from the same app.
 
 ## Why this fits the hackathon
 
